@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
-    public class EnderecoController : Controller
+    public class EnderecoController : ControllerBase
     {
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 if (enderecos.Count() > 0)
                     return Ok(enderecos);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -42,7 +42,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 if (endereco != null)
                     return Ok(endereco);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -54,7 +54,7 @@ namespace LocadoraVipFilmes.API.Controllers
             if (ModelState.IsValid)
             {
                 _enderecoRepository.Add(endereco);
-                return Ok();
+                return CreatedAtAction(nameof(GetById), new { Id = endereco.Id }, endereco);
             }
 
             return BadRequest("Validar se todos campos estão corretos.");

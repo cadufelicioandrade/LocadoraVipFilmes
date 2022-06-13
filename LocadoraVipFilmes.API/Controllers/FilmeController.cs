@@ -28,7 +28,7 @@ namespace LocadoraVipFilmes.Controllers
                 if (filmes.Count() > 0)
                     return Ok(filmes);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -44,7 +44,7 @@ namespace LocadoraVipFilmes.Controllers
                 if (filme != null)
                     return Ok(filme);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -56,7 +56,7 @@ namespace LocadoraVipFilmes.Controllers
             if (ModelState.IsValid)
             {
                 _filmeRepository.Add(filme);
-                return Ok();
+                return CreatedAtAction(nameof(GetById), new { Id = filme.Id }, filme);
             }
 
             return BadRequest("Validar se todos campos estão corretos.");

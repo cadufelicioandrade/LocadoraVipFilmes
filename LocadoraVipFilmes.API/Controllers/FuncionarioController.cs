@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipfuncionarios.API.Controllers
 {
-    public class FuncionarioController : Controller
+    public class FuncionarioController : ControllerBase
     {
         private readonly IFuncionarioRepository _funcionarioRepository;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
                 if (funcionarios.Count() > 0)
                     return Ok(funcionarios);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -42,7 +42,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
                 if (funcionario != null)
                     return Ok(funcionario);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -54,7 +54,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
             if (ModelState.IsValid)
             {
                 _funcionarioRepository.Add(funcionario);
-                return Ok();
+                return CreatedAtAction(nameof(GetById), new { Id = funcionario.Id }, funcionario);
             }
 
             return BadRequest("Validar se todos campos estão corretos.");

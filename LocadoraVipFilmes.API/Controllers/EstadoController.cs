@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
-    public class EstadoController : Controller
+    public class EstadoController : ControllerBase
     {
         private readonly IEstadoRepository _estadoRepository;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 if (estados.Count() > 0)
                     return Ok(estados);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -42,7 +42,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 if (estado != null)
                     return Ok(estado);
 
-                return NotFound("Nenhum iten localizado.");
+                return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
@@ -54,7 +54,7 @@ namespace LocadoraVipFilmes.API.Controllers
             if (ModelState.IsValid)
             {
                 _estadoRepository.Add(estado);
-                return Ok();
+                return CreatedAtAction(nameof(GetById), new { Id = estado.Id }, estado);
             }
 
             return BadRequest("Validar se todos campos estão corretos.");

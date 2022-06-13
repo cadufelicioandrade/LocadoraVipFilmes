@@ -1,0 +1,17 @@
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\bin\Debug\net6.0\LocadoraVipFilmes.Data.deps.json
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\bin\Debug\net6.0\LocadoraVipFilmes.Data.runtimeconfig.json
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\bin\Debug\net6.0\LocadoraVipFilmes.Data.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\bin\Debug\net6.0\LocadoraVipFilmes.Data.pdb
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\bin\Debug\net6.0\LocadoraVipFilmes.Dominio.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\bin\Debug\net6.0\LocadoraVipFilmes.Dominio.pdb
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.csproj.AssemblyReference.cache
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.AssemblyInfoInputs.cache
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.AssemblyInfo.cs
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.csproj.CoreCompileInputs.cache
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.csproj.CopyComplete
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\refint\LocadoraVipFilmes.Data.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.pdb
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\LocadoraVipFilmes.Data.genruntimeconfig.cache
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Data\obj\Debug\net6.0\ref\LocadoraVipFilmes.Data.dll

@@ -13,7 +13,10 @@ namespace LocadoraVipFilmes.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Ator> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(x => x.Id);
+            builder.HasMany(ator => ator.FilmeAtors)
+                .WithOne(filmeAtor => filmeAtor.Ator)
+                .HasForeignKey(filmeAtor => filmeAtor.AtorId);
         }
     }
 }

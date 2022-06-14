@@ -13,7 +13,7 @@ namespace LocadoraVipFilmes.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<PedidoFilme> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(pf => pf.Id);
         }
     }
 }

@@ -14,5 +14,6 @@ namespace LocadoraVipFilmes.Data.Repository
         public ClienteRepository(LocadoraContext context) : base(context)
         {
         }
+
     }
 }

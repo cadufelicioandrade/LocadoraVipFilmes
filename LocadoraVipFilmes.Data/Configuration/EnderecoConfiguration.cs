@@ -13,7 +13,7 @@ namespace LocadoraVipFilmes.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Endereco> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(e => e.Id);
         }
     }
 }

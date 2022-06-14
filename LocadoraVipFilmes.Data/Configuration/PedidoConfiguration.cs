@@ -13,7 +13,11 @@ namespace LocadoraVipFilmes.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(p => p.Id);
+
+            builder.HasMany(pedido => pedido.PedidoFilmes)
+                .WithOne(pedidoFilme => pedidoFilme.Pedido)
+                .HasForeignKey(pedidoFilme => pedidoFilme.PedidoId);
         }
     }
 }

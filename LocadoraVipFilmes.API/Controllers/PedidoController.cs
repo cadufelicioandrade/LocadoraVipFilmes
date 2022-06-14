@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.PedidoDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var pedidos = await _pedidoRepository.GetAll();
 
                 if (pedidos.Count() > 0)
-                    return Ok(pedidos);
+                    return Ok(_mapper.Map<IEnumerable<ReadPedidoDTO>>(pedidos));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var pedido = await _pedidoRepository.GetById(id);
 
                 if (pedido != null)
-                    return Ok(pedido);
+                    return Ok(_mapper.Map<ReadPedidoDTO>(pedido));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Pedido pedido)
+        public async Task<IActionResult> Add([FromBody] CreatePedidoDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var pedido = _mapper.Map<Pedido>(dto);
                 _pedidoRepository.Add(pedido);
                 return CreatedAtAction(nameof(GetById), new { Id = pedido.Id }, pedido);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Pedido pedido)
+        public async Task<IActionResult> Update([FromBody] UpdatePedidoDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var pedido = _mapper.Map<Pedido>(dto);
                 _pedidoRepository.Update(pedido);
                 return Ok();
             }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.FuncionarioDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
                 var funcionarios = await _funcionarioRepository.GetAll();
 
                 if (funcionarios.Count() > 0)
-                    return Ok(funcionarios);
+                    return Ok(_mapper.Map<IEnumerable<ReadFuncionarioDTO>>(funcionarios));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
                 var funcionario = await _funcionarioRepository.GetById(id);
 
                 if (funcionario != null)
-                    return Ok(funcionario);
+                    return Ok(_mapper.Map<ReadFuncionarioDTO>(funcionario));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Funcionario funcionario)
+        public async Task<IActionResult> Add([FromBody] CreateFuncionarioDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var funcionario = _mapper.Map<Funcionario>(dto);
                 _funcionarioRepository.Add(funcionario);
                 return CreatedAtAction(nameof(GetById), new { Id = funcionario.Id }, funcionario);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Funcionario funcionario)
+        public async Task<IActionResult> Update([FromBody] UpdateFuncionarioDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var funcionario = _mapper.Map<Funcionario>(dto);
                 _funcionarioRepository.Update(funcionario);
                 return Ok();
             }

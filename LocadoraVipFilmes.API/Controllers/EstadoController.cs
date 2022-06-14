@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.EstadoDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var estados = await _estadoRepository.GetAll();
 
                 if (estados.Count() > 0)
-                    return Ok(estados);
+                    return Ok(_mapper.Map<IEnumerable<ReadEstadoDTO>>(estados));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var estado = await _estadoRepository.GetById(id);
 
                 if (estado != null)
-                    return Ok(estado);
+                    return Ok(_mapper.Map<ReadEstadoDTO>(estado));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Estado estado)
+        public async Task<IActionResult> Add([FromBody] CreateEstadoDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var estado = _mapper.Map<Estado>(dto);
                 _estadoRepository.Add(estado);
                 return CreatedAtAction(nameof(GetById), new { Id = estado.Id }, estado);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Estado estado)
+        public async Task<IActionResult> Update([FromBody] UpdateEstadoDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var estado = _mapper.Map<Estado>(dto);
                 _estadoRepository.Update(estado);
                 return Ok();
             }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.GeneroDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var generos = await _generoRepository.GetAll();
 
                 if (generos.Count() > 0)
-                    return Ok(generos);
+                    return Ok(_mapper.Map<IEnumerable<ReadGeneroDTO>>(generos));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var genero = await _generoRepository.GetById(id);
 
                 if (genero != null)
-                    return Ok(genero);
+                    return Ok(_mapper.Map<ReadGeneroDTO>(genero));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Genero genero)
+        public async Task<IActionResult> Add([FromBody] CreateGeneroDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var genero = _mapper.Map<Genero>(dto);
                 _generoRepository.Add(genero);
                 return CreatedAtAction(nameof(GetById), new { Id = genero.Id }, genero);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Genero genero)
+        public async Task<IActionResult> Update([FromBody] UpdateGeneroDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var genero = _mapper.Map<Genero>(dto);
                 _generoRepository.Update(genero);
                 return Ok();
             }

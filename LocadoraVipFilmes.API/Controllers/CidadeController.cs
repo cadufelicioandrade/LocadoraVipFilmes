@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.CidadeDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var cidades = await _cidadeRepository.GetAll();
 
                 if (cidades.Count() > 0)
-                    return Ok(cidades);
+                    return Ok(_mapper.Map<IEnumerable<ReadCidadeDTO>>(cidades));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var cidade = await _cidadeRepository.GetById(id);
 
                 if (cidade != null)
-                    return Ok(cidade);
+                    return Ok(_mapper.Map<ReadCidadeDTO>(cidade));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Cidade cidade)
+        public async Task<IActionResult> Add([FromBody] CreateCidadeDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var cidade = _mapper.Map<Cidade>(dto);
                 _cidadeRepository.Add(cidade);
                 return CreatedAtAction(nameof(GetById), new { Id = cidade.Id }, cidade);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Cidade cidade)
+        public async Task<IActionResult> Update([FromBody] UpdateCidadeDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var cidade = _mapper.Map<Cidade>(dto);
                 _cidadeRepository.Update(cidade);
                 return Ok();
             }

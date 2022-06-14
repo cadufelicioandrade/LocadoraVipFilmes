@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.EnderecoDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var enderecos = await _enderecoRepository.GetAll();
 
                 if (enderecos.Count() > 0)
-                    return Ok(enderecos);
+                    return Ok(_mapper.Map<IEnumerable<ReadEnderecoDTO>>(enderecos));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var endereco = await _enderecoRepository.GetById(id);
 
                 if (endereco != null)
-                    return Ok(endereco);
+                    return Ok(_mapper.Map<ReadEnderecoDTO>(endereco));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Endereco endereco)
+        public async Task<IActionResult> Add([FromBody] CreateEnderecoDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var endereco = _mapper.Map<Endereco>(dto);
                 _enderecoRepository.Add(endereco);
                 return CreatedAtAction(nameof(GetById), new { Id = endereco.Id }, endereco);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Endereco endereco)
+        public async Task<IActionResult> Update([FromBody] UpdateEnderecoDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var endereco = _mapper.Map<Endereco>(dto);
                 _enderecoRepository.Update(endereco);
                 return Ok();
             }

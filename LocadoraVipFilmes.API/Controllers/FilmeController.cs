@@ -1,4 +1,5 @@
 using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.FilmeDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace LocadoraVipFilmes.Controllers
                 var filmes = await _filmeRepository.GetAll();
 
                 if (filmes.Count() > 0)
-                    return Ok(filmes);
+                    return Ok(_mapper.Map<IEnumerable<ReadFilmeDTO>>(filmes));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -42,7 +43,7 @@ namespace LocadoraVipFilmes.Controllers
                 var filme = await _filmeRepository.GetById(id);
 
                 if (filme != null)
-                    return Ok(filme);
+                    return Ok(_mapper.Map<ReadFilmeDTO>(filme));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -51,10 +52,11 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Filme filme)
+        public async Task<IActionResult> Add([FromBody] CreateFilmeDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var filme = _mapper.Map<Filme>(dto);
                 _filmeRepository.Add(filme);
                 return CreatedAtAction(nameof(GetById), new { Id = filme.Id }, filme);
             }
@@ -63,10 +65,11 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Filme filme)
+        public async Task<IActionResult> Update([FromBody] UpdateFilmeDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var filme = _mapper.Map<Filme>(dto);
                 _filmeRepository.Update(filme);
                 return Ok();
             }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LocadoraVipFilmes.API.DTOs.ProdutoraDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var produtoras = await _produtoraRepository.GetAll();
 
                 if (produtoras.Count() > 0)
-                    return Ok(produtoras);
+                    return Ok(_mapper.Map<IEnumerable<ReadProdutoraDTO>>(produtoras));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -40,7 +41,7 @@ namespace LocadoraVipFilmes.API.Controllers
                 var produtora = await _produtoraRepository.GetById(id);
 
                 if (produtora != null)
-                    return Ok(produtora);
+                    return Ok(_mapper.Map<ReadProdutoraDTO>(produtora));
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -49,10 +50,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Produtora produtora)
+        public async Task<IActionResult> Add([FromBody] CreateProdutoraDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var produtora = _mapper.Map<Produtora>(dto);
                 _produtoraRepository.Add(produtora);
                 return CreatedAtAction(nameof(GetById), new { Id = produtora.Id}, produtora);
             }
@@ -61,10 +63,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] Produtora produtora)
+        public async Task<IActionResult> Update([FromBody] UpdateProdutoraDTO dto)
         {
             if (ModelState.IsValid)
             {
+                var produtora = _mapper.Map<Produtora>(dto);
                 _produtoraRepository.Update(produtora);
                 return Ok();
             }

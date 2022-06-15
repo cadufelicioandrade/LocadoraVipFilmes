@@ -14,16 +14,16 @@ namespace LocadoraVipFilmes.Dominio.Model
 
         }
 
-        [MaxLength(20, ErrorMessage = "O Estado só pode ter o máximo de 20 caracteres.")]
         [Required(ErrorMessage = "O campo NomeEstado é obrigatório.")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "Estado deve ter entre 2 e 15 caracteres.")]
         public string NomeEstado { get; set; }
 
-        [MaxLength(2, ErrorMessage = "O UF só pode ter o máximo de 2 caracteres.")]
         [Required(ErrorMessage = "O campo UF é obrigatório.")]
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "UF deve ter 2 caracteres.")]
         public string UF { get; set; }
 
-        [MaxLength(10, ErrorMessage = "O Pais só pode ter o máximo de 10 caracteres.")]
         [Required(ErrorMessage = "O campo Pais é obrigatório.")]
+        [StringLength(5, MinimumLength = 5, ErrorMessage = "País deve ter 5 caracteres.")]
         public string Pais { get; set; }
 
         public virtual List<Cidade> Cidades { get; set; }

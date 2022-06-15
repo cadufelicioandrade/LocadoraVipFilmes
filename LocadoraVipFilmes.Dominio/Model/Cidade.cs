@@ -15,8 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo NomeCidade é obrigatório.")]
-        [MaxLength(30, ErrorMessage = "Nome Cidade só pode ter o máximo de 30 caracteres.")]
-        [MinLength(3, ErrorMessage = "O Nome Cidade não pode ter menos de 3 caracteres.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Nome Cidade deve ter entre 3 e 30 caracteres.")]
         public string NomeCidade { get; set; }
 
         [Required(ErrorMessage = "O campo EstadoId é obrigatório.")]

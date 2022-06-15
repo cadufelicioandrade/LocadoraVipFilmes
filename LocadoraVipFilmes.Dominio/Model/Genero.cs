@@ -15,8 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo NomeGenero é obrigatório.")]
-        [MaxLength(25, ErrorMessage = "O Nome Genero não pode ter mais de 25 caracteres.")]
-        [MinLength(3, ErrorMessage = "O Nome Genero não pode ter menos de 3 caracteres.")]
+        [StringLength(35, MinimumLength = 3, ErrorMessage = "Gênero deve ter entre 3 e 35 caracteres.")]
         public string NomeGenero { get; set; }
 
         public virtual List<Filme>  Filmes { get; set; }

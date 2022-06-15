@@ -10,8 +10,7 @@ namespace LocadoraVipFilmes.Dominio.Model
     public class Pessoa : ModelBase
     {
         [Required(ErrorMessage = "O campo SobreNome é obrigatório.")]
-        [MaxLength(30, ErrorMessage = "O SobreNome não pode ter mais de 30 caracteres.")]
-        [MinLength(3, ErrorMessage = "O SobreNome não pode ter menos de 3 caracteres.")]
+        [StringLength(35, MinimumLength = 3, ErrorMessage = "SobreNome deve ter entre 3 e 35 caracteres.")]
         public string SobreNome { get; set; }
 
         [Required(ErrorMessage = "O campo CPF é obrigatório.")]

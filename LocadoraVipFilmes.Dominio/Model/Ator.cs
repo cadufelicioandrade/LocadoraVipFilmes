@@ -15,8 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo NomeAtor é obrigatório.")]
-        [MaxLength(40, ErrorMessage = "Nome Ator só pode ter o máximo de 40 caracteres.")]
-        [MinLength(3, ErrorMessage = "O Nome Ator não pode ter menos de 3 caracteres.")]
+        [StringLength(40,MinimumLength =3, ErrorMessage ="Nome Ator deve ter entre 3 e 40 caracteres.")]
         public string NomeAtor { get; set; }
         public string SobreNome { get; set; }
         public DateTime DtNascimento { get; set; }

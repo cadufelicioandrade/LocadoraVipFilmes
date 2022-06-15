@@ -15,7 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo ValorUnitario é obrigatório.")]
-        [MinLength(0, ErrorMessage = "O Valor Unitario não pode ter menos de 0.")]
+        [MinLength(0, ErrorMessage = "O Valor Unitário não pode ser menor de 0.")]
         public double ValorUnitario { get; set; }
 
         [Required(ErrorMessage = "O campo PedidoId é obrigatório.")]

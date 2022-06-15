@@ -15,22 +15,19 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo Logradouro é obrigatório.")]
-        [MaxLength(40, ErrorMessage = "Logradouro só pode ter o máximo de 40 caracteres.")]
-        [MinLength(5, ErrorMessage = "O Logradouro não pode ter menos de 5 caracteres.")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Logradouro deve ter entre 3 e 50 caracteres.")]
         public string Logradouro { get; set; }
 
         [Required(ErrorMessage = "O campo Bairro é obrigatório.")]
-        [MaxLength(25, ErrorMessage = "O Bairro só pode ter o máximo de 25 caracteres.")]
-        [MinLength(5, ErrorMessage = "O Bairro não pode ter menos de 5 caracteres.")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Bairro deve ter entre 3 e 25 caracteres.")]
         public string Bairro { get; set; }
 
         [Required(ErrorMessage = "O campo CEP é obrigatório.")]
-        [MaxLength(15, ErrorMessage = "O CEP só pode ter o máximo de 15 caracteres.")]
-        [MinLength(5, ErrorMessage = "O CEP não pode ter menos de 5 caracteres.")]
+        [StringLength(15, MinimumLength = 5, ErrorMessage = "Bairro deve ter entre 5 e 15 caracteres.")]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "O campo Numero é obrigatório.")]
-        [MinLength(0, ErrorMessage = "O Número não pode ser menor que zero.")]
+        [Range(0, 100000, ErrorMessage = "O Número não pode ser menor que zero.")]
         public int Numero { get; set; }
 
         public int? ClienteId { get; set; }

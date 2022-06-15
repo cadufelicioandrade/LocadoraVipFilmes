@@ -23,7 +23,7 @@ builder.Services.AddDbContext<LocadoraContext>(options =>
 #region dependency injection
 builder.Services.AddScoped<LocadoraContext>();
 builder.Services.AddScoped<IAtorRepository, AtorRepository>();
-builder.Services.AddScoped<ICidadeRepository, ICidadeRepository>();
+builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
 builder.Services.AddScoped<IEstadoRepository, EstadoRepository>();

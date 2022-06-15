@@ -11,7 +11,7 @@ namespace LocadoraVipFilmes.Data.Context
 {
     public class LocadoraContext : DbContext
     {
-        public LocadoraContext(DbContextOptions<LocadoraContext> options):base(options)
+        public LocadoraContext(DbContextOptions<LocadoraContext> options): base(options)
         {
 
         }

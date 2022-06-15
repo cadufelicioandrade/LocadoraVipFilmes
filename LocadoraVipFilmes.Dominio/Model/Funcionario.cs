@@ -15,8 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo NomeFuncionario é obrigatório.")]
-        [MaxLength(50, ErrorMessage = "O Nome Funcionario não pode ter mais de 50 caracteres.")]
-        [MinLength(3, ErrorMessage = "O Nome Funcionario não pode ter menos de 3 caracteres.")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Nome funcionário deve ter entre 3 e 50 caracteres.")]
         public string NomeFuncionario { get; set; }
     }
 }

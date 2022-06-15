@@ -15,8 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo NomeCliente é obrigatório.")]
-        [MaxLength(50, ErrorMessage = "O Nome Cliente não pode ter mais de 50 caracteres.")]
-        [MinLength(3, ErrorMessage = "O Nome Cliente não pode ter menos de 3 caracteres.")]
+        [StringLength(40, MinimumLength = 3, ErrorMessage = "Nome Cliente deve ter entre 3 e 40 caracteres.")]
         public string NomeCliente { get; set; }
     }
 }

@@ -20,13 +20,17 @@ namespace LocadoraVipFilmes.Dominio.Model
         [Required(ErrorMessage = "O campo RG é obrigatório.")]
         [MaxLength(9, ErrorMessage = "RG não pode ter mais de 9 caracteres.")]
         public string RG { get; set; }
-        
+
+        [MaxLength(20, ErrorMessage = "TelFixo não pode ter mais de 9 caracteres.")]
         public string TelFixo { get; set; }
 
         [Required(ErrorMessage = "O campo Celular é obrigatório.")]
+        [MaxLength(20, ErrorMessage = "Celular não pode ter mais de 9 caracteres.")]
         public string Celular { get; set; }
 
         [Required(ErrorMessage = "O campo Email é obrigatório.")]
+        [EmailAddress(ErrorMessage ="Verifique o formado do e-mail.")]
+        [MaxLength(60, ErrorMessage = "E-mail não pode ter mais de 60 caracteres.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo DtNascimento é obrigatório.")]

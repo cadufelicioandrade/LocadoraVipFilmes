@@ -23,7 +23,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         public string UF { get; set; }
 
         [Required(ErrorMessage = "O campo Pais é obrigatório.")]
-        [StringLength(5, MinimumLength = 5, ErrorMessage = "País deve ter 5 caracteres.")]
+        [StringLength(7, MinimumLength = 5, ErrorMessage = "País deve ter 7 caracteres.")]
         public string Pais { get; set; }
 
         public virtual List<Cidade> Cidades { get; set; }

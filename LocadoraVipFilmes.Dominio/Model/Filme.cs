@@ -23,7 +23,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         public int Duracao { get; set; }
 
         [Required(ErrorMessage = "O campo Descricao é obrigatório.")]
-        [StringLength(250, MinimumLength = 3, ErrorMessage = "Descricao deve ter entre 3 e 250 caracteres.")]
+        [StringLength(300, MinimumLength = 3, ErrorMessage = "Descricao deve ter entre 3 e 300 caracteres.")]
         public string Descricao { get; set; }
 
         public DateTime DtInclusao { get; set; }

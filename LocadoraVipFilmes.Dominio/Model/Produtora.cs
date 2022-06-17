@@ -15,7 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo NomeProdutora é obrigatório.")]
-        [StringLength(25, MinimumLength = 3, ErrorMessage = "NomeProdutora deve ter entre 3 e 25 caracteres.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "NomeProdutora deve ter entre 3 e 30 caracteres.")]
         public string NomeProdutora { get; set; }
         public virtual List<Filme> Filmes { get; set; }
 

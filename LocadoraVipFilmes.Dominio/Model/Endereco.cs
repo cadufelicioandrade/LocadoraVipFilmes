@@ -15,7 +15,7 @@ namespace LocadoraVipFilmes.Dominio.Model
         }
 
         [Required(ErrorMessage = "O campo Logradouro é obrigatório.")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Logradouro deve ter entre 3 e 50 caracteres.")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "Logradouro deve ter entre 3 e 50 caracteres.")]
         public string Logradouro { get; set; }
 
         [Required(ErrorMessage = "O campo Bairro é obrigatório.")]

@@ -23,6 +23,8 @@ namespace LocadoraVipFilmes.Data.Configuration
                 .WithOne(endereco => endereco.Funcionario)
                 .HasForeignKey<Endereco>(endereco => endereco.FuncionarioId);
 
+            builder.Property(f => f.SobreNome).HasMaxLength(35);
+
         }
     }
 }

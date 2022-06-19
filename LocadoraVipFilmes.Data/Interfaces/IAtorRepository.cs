@@ -9,5 +9,6 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IAtorRepository : IBaseRepository<Ator>
     {
+        void AdicionarFilmeAtor(Ator ator);
     }
 }

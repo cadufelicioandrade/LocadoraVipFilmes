@@ -55,7 +55,7 @@ namespace LocadoraVipFilmes.API.Controllers
             if (ModelState.IsValid)
             {
                 var pedido = _mapper.Map<Pedido>(dto);
-                _pedidoRepository.Add(pedido);
+                _pedidoRepository.AdicionarPedidoFilme(pedido);
                 return CreatedAtAction(nameof(GetById), new { Id = pedido.Id }, pedido);
             }
 

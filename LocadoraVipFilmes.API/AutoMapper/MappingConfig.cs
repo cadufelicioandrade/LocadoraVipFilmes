@@ -12,11 +12,6 @@ using LocadoraVipFilmes.API.DTOs.PedidoDTO;
 using LocadoraVipFilmes.API.DTOs.PedidoFilmeDTO;
 using LocadoraVipFilmes.API.DTOs.ProdutoraDTO;
 using LocadoraVipFilmes.Dominio.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVipFilmes.API.AutoMapper
 {

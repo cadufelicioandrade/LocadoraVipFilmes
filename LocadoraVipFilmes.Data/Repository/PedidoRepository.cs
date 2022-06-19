@@ -14,5 +14,12 @@ namespace LocadoraVipFilmes.Data.Repository
         public PedidoRepository(LocadoraContext context) : base(context)
         {
         }
+
+        public async void AdicionarPedidoFilme(Pedido pedido)
+        {
+            _context.Pedidos.Add(pedido);
+            _context.PedidoFilmes.AddRange(pedido.PedidoFilmes);
+            await _context.SaveChangesAsync();
+        }
     }
 }

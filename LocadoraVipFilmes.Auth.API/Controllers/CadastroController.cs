@@ -1,3 +1,6 @@
+using FluentResults;
+using LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO;
+using LocadoraVipFilmes.Auth.API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.Auth.API.Controllers
@@ -6,13 +9,20 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
     [Route("[controller]")]
     public class CadastroController : ControllerBase
     {
-        public CadastroController()
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public CadastroController(IUsuarioRepository usuarioRepository)
         {
+            _usuarioRepository = usuarioRepository;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IActionResult CreateUser()
+        [HttpPost]
+        public IActionResult CreateUser([FromBody] CreateUsuarioDTO createUsuario)
         {
+            Result result = _usuarioRepository.CadastrarUsuario(createUsuario);
+
+            if (result.IsFailed)
+                return StatusCode(500);
 
             return Ok();
         }

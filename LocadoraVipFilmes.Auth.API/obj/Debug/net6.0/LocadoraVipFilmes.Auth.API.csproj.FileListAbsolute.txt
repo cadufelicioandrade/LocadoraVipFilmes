@@ -8,6 +8,7 @@ C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\AutoMapper.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Castle.Core.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\FluentResults.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Humanizer.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\MessagePack.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\MessagePack.Annotations.dll
@@ -43,7 +44,9 @@ C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll

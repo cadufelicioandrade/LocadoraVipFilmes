@@ -3,6 +3,7 @@ using LocadoraVipFilmes.Auth.API.AutoMapper;
 using LocadoraVipFilmes.Auth.API.Context;
 using LocadoraVipFilmes.Auth.API.Interfaces;
 using LocadoraVipFilmes.Auth.API.Repository;
+using LocadoraVipFilmes.Auth.API.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
 
 #region DbContext
 builder.Services.AddDbContext<AuthDbContext>(options =>
@@ -32,6 +33,8 @@ builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>()
 #region dependency injection
 builder.Services.AddScoped<AuthDbContext>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<TokenService, TokenService>();
 #endregion
 
 #region AutoMapper Configuration
@@ -45,8 +48,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

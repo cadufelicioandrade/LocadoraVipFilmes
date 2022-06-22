@@ -28,8 +28,8 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             return Ok(result.Successes[0]);
         }
 
-        [HttpPost("/Ativa")]
-        public IActionResult AtivarContaUsuario(AtivaContaRequest request)
+        [HttpGet("/Ativa")]
+        public IActionResult AtivarContaUsuario([FromQuery] AtivaContaRequest request)
         {
             Result result = _usuarioRepository.AtivarContaUsuario(request);
 

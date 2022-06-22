@@ -34,6 +34,7 @@ builder.Services.AddScoped<AuthDbContext>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<TokenService, TokenService>();
+builder.Services.AddScoped<EmailService, EmailService>();
 #endregion
 
 #region AutoMapper Configuration

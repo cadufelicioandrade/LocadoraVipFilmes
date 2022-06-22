@@ -10,6 +10,7 @@ C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Castle.Core.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\FluentResults.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Humanizer.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\MailKit.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\MessagePack.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\MessagePack.Annotations.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -62,6 +63,7 @@ C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\MimeKit.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\NuGet.Common.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\NuGet.Configuration.dll
@@ -72,6 +74,7 @@ C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\BouncyCastle.Crypto.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Projetos\Meus Projetos\LocadoraVipFilmes\LocadoraVipFilmes.Auth.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll

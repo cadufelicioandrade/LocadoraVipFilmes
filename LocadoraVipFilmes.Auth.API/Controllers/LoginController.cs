@@ -22,7 +22,7 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             Result result = _loginRepository.Login(request);
 
             if (result.IsFailed)
-                return Unauthorized(result.Errors);
+                return Unauthorized(result.Errors[0]);
 
             return Ok(result.Successes[0].Message);
         }

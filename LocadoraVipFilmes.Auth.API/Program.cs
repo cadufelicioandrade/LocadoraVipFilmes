@@ -12,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
@@ -24,10 +23,10 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
 #endregion
 
 #region configuration identity
-
-builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>()
-    .AddEntityFrameworkStores<AuthDbContext>();
-
+builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>(options => 
+    options.SignIn.RequireConfirmedEmail = true)
+    .AddEntityFrameworkStores<AuthDbContext>()
+    .AddDefaultTokenProviders();
 #endregion
 
 #region dependency injection

@@ -3,6 +3,7 @@ using FluentResults;
 using LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO;
 using LocadoraVipFilmes.Auth.API.Interfaces;
 using LocadoraVipFilmes.Auth.API.Model;
+using LocadoraVipFilmes.Auth.API.Requests;
 using Microsoft.AspNetCore.Identity;
 
 namespace LocadoraVipFilmes.Auth.API.Repository
@@ -19,6 +20,17 @@ namespace LocadoraVipFilmes.Auth.API.Repository
             _userManager = userManager;
         }
 
+        public Result AtivarContaUsuario(AtivaContaRequest request)
+        {
+            var identityUser = _userManager.Users.FirstOrDefault(u => u.Id == request.UsuarioId);
+            var identityResult = _userManager.ConfirmEmailAsync(identityUser, request.CodigoAtivacao).Result;
+
+            if (identityResult.Succeeded)
+                return Result.Ok().WithSuccess("E-mail ativado com sucesso.");
+
+            return Result.Fail("Falha ao ativar conta de usuário");
+        }
+
         public Result CadastrarUsuario(CreateUsuarioDTO createUsuario)
         {
             Usuario usuario = _mapper.Map<Usuario>(createUsuario);
@@ -26,7 +38,10 @@ namespace LocadoraVipFilmes.Auth.API.Repository
             Task<IdentityResult> resultadoIdentity = _userManager.CreateAsync(identityUser, createUsuario.Password);
 
             if (resultadoIdentity.Result.Succeeded)
-                return Result.Ok();
+            {
+                var code = _userManager.GenerateEmailConfirmationTokenAsync(identityUser).Result;
+                return Result.Ok().WithSuccess(code);
+            }
 
             return Result.Fail("Falha ao cadastrar usuário.");
         }

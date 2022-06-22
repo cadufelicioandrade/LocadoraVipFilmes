@@ -1,6 +1,7 @@
 using FluentResults;
 using LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO;
 using LocadoraVipFilmes.Auth.API.Interfaces;
+using LocadoraVipFilmes.Auth.API.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.Auth.API.Controllers
@@ -24,7 +25,19 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             if (result.IsFailed)
                 return StatusCode(500);
 
-            return Ok();
+            return Ok(result.Successes[0]);
         }
+
+        [HttpPost("/Ativa")]
+        public IActionResult AtivarContaUsuario(AtivaContaRequest request)
+        {
+            Result result = _usuarioRepository.AtivarContaUsuario(request);
+
+            if (result.IsFailed)
+                return StatusCode(500);
+
+            return Ok(result.Successes[0]);
+        }
+
     }
 }

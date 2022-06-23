@@ -24,8 +24,29 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             if (result.IsFailed)
                 return Unauthorized(result.Errors[0]);
 
-            return Ok(result.Successes[0].Message);
+            return Ok(result.Successes[0]);
         }
 
+        [HttpPost("/recupera-senha")]
+        public IActionResult RecuperarSenha([FromBody] RecuperaSenhaRequest request)
+        {
+            Result result = _loginRepository.RecuperarSenha(request);
+
+            if (result.IsFailed)
+                return Unauthorized(result.Errors[0]);
+
+            return Ok(result.Successes[0]);
+        }
+
+        [HttpPost("/reset-senha")]
+        public IActionResult EfetuarResetSenha([FromBody] ResetSenhaRequest request)
+        {
+            Result result = _loginRepository.EfetuarResetSenha(request);
+
+            if (result.IsFailed)
+                return Unauthorized(result.Errors[0]);
+
+            return Ok();
+        }
     }
 }

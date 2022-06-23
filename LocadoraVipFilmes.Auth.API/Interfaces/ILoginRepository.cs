@@ -9,5 +9,7 @@ namespace LocadoraVipFilmes.Auth.API.Interfaces
     {
         Result Login(LoginRequest request);
         Result Logout();
+        Result RecuperarSenha(RecuperaSenhaRequest request);
+        Result EfetuarResetSenha(ResetSenhaRequest request);
     }
 }

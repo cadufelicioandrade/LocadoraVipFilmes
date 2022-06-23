@@ -45,5 +45,40 @@ namespace LocadoraVipFilmes.Auth.API.Repository
 
             return Result.Fail("Não foi possível realizar o logout.");
         }
+
+        public Result RecuperarSenha(RecuperaSenhaRequest request)
+        {
+            IdentityUser<int>? identityUser = GetIdentiyUser(request.Email);
+
+            if (identityUser != null)
+            {
+                var codigoRecuperacao = _signManager.UserManager
+                                            .GeneratePasswordResetTokenAsync(identityUser).Result;
+
+                return Result.Ok().WithSuccess(codigoRecuperacao);
+            }
+
+            return Result.Fail("Falha ao redefinir a senha, entre em contato com o suporte.");
+        }
+
+        public Result EfetuarResetSenha(ResetSenhaRequest request)
+        {
+            IdentityUser<int>? identityUser = GetIdentiyUser(request.Email);
+
+            if(identityUser != null)
+            {
+                IdentityResult identityResult = _signManager.UserManager
+                    .ResetPasswordAsync(identityUser, request.Token, request.Password).Result;
+
+                if (identityResult.Succeeded)
+                    return Result.Ok();
+            }
+
+            return Result.Fail("Erro ao resetar senha, entrar em contato com o suporte.");
+        }
+
+        private IdentityUser<int>? GetIdentiyUser(string email) 
+            =>_signManager.UserManager.Users.FirstOrDefault(u => u.NormalizedEmail == email.ToUpper());
+
     }
 }

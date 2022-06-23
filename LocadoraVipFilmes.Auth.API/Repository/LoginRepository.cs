@@ -48,7 +48,7 @@ namespace LocadoraVipFilmes.Auth.API.Repository
 
         public Result RecuperarSenha(RecuperaSenhaRequest request)
         {
-            IdentityUser<int>? identityUser = GetIdentiyUser(request.Email);
+            IdentityUser<int>? identityUser = GetIdentiyUserByEmail(request.Email);
 
             if (identityUser != null)
             {
@@ -63,7 +63,7 @@ namespace LocadoraVipFilmes.Auth.API.Repository
 
         public Result EfetuarResetSenha(ResetSenhaRequest request)
         {
-            IdentityUser<int>? identityUser = GetIdentiyUser(request.Email);
+            IdentityUser<int>? identityUser = GetIdentiyUserByEmail(request.Email);
 
             if(identityUser != null)
             {
@@ -71,13 +71,13 @@ namespace LocadoraVipFilmes.Auth.API.Repository
                     .ResetPasswordAsync(identityUser, request.Token, request.Password).Result;
 
                 if (identityResult.Succeeded)
-                    return Result.Ok();
+                    return Result.Ok().WithSuccess("Senha redefinida com sucesso!");
             }
 
             return Result.Fail("Erro ao resetar senha, entrar em contato com o suporte.");
         }
 
-        private IdentityUser<int>? GetIdentiyUser(string email) 
+        private IdentityUser<int>? GetIdentiyUserByEmail(string email) 
             =>_signManager.UserManager.Users.FirstOrDefault(u => u.NormalizedEmail == email.ToUpper());
 
     }

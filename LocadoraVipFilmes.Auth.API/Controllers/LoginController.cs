@@ -46,7 +46,7 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             if (result.IsFailed)
                 return Unauthorized(result.Errors[0]);
 
-            return Ok();
+            return Ok(result.Successes[0]);
         }
     }
 }

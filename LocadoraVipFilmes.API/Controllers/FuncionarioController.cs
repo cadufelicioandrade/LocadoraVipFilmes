@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipfuncionarios.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class FuncionarioController : ControllerBase
     {
         private readonly IFuncionarioRepository _funcionarioRepository;
@@ -18,11 +20,11 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var funcionarios = await _funcionarioRepository.GetAll();
+                var funcionarios = _funcionarioRepository.GetAll();
 
                 if (funcionarios.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadFuncionarioDTO>>(funcionarios));
@@ -34,11 +36,11 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var funcionario = await _funcionarioRepository.GetById(id);
+                var funcionario = _funcionarioRepository.GetById(id);
 
                 if (funcionario != null)
                     return Ok(_mapper.Map<ReadFuncionarioDTO>(funcionario));
@@ -50,7 +52,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateFuncionarioDTO dto)
+        public IActionResult Add([FromBody] CreateFuncionarioDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateFuncionarioDTO dto)
+        public IActionResult Update([FromBody] UpdateFuncionarioDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +78,11 @@ namespace LocadoraVipfuncionarios.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _funcionarioRepository.Delete(id);
+                var status = _funcionarioRepository.Delete(id);
 
                 if (status)
                     return NoContent();

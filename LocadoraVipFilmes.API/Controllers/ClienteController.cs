@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
         private readonly IClienteRepository _clienteRepository;
@@ -18,11 +20,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var clientes = await _clienteRepository.GetAll();
+                var clientes = _clienteRepository.GetAll();
 
                 if (clientes.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadClienteDTO>>(clientes));
@@ -34,11 +36,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var cliente = await _clienteRepository.GetById(id);
+                var cliente = _clienteRepository.GetById(id);
 
                 if (cliente != null)
                     return Ok(_mapper.Map<ReadClienteDTO>(cliente));
@@ -50,7 +52,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateClienteDTO dto)
+        public IActionResult Add([FromBody] CreateClienteDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateClienteDTO dto)
+        public IActionResult Update([FromBody] UpdateClienteDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +78,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _clienteRepository.Delete(id);
+                var status = _clienteRepository.Delete(id);
 
                 if (status)
                     return NoContent();

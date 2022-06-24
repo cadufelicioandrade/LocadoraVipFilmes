@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class EstadoController : ControllerBase
     {
         private readonly IEstadoRepository _estadoRepository;
@@ -18,11 +20,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var estados = await _estadoRepository.GetAll();
+                IEnumerable<Estado> estados = _estadoRepository.GetAll();
 
                 if (estados.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadEstadoDTO>>(estados));
@@ -34,11 +36,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var estado = await _estadoRepository.GetById(id);
+                var estado = _estadoRepository.GetById(id);
 
                 if (estado != null)
                     return Ok(_mapper.Map<ReadEstadoDTO>(estado));
@@ -50,7 +52,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateEstadoDTO dto)
+        public IActionResult Add([FromBody] CreateEstadoDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateEstadoDTO dto)
+        public IActionResult Update([FromBody] UpdateEstadoDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +78,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _estadoRepository.Delete(id);
+                var status = _estadoRepository.Delete(id);
 
                 if (status)
                     return NoContent();

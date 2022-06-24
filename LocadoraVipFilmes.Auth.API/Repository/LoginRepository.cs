@@ -28,7 +28,10 @@ namespace LocadoraVipFilmes.Auth.API.Repository
                 var identityUser = _signManager.UserManager.Users
                         .FirstOrDefault(user => user.NormalizedUserName == request.Username.ToUpper());
 
-                Token token = _tokenService.CreateToken(identityUser);
+                var roleUserResult = _signManager.UserManager.GetRolesAsync(identityUser)
+                                                             .Result.FirstOrDefault();
+
+                Token token = _tokenService.CreateToken(identityUser, roleUserResult);
 
                 return Result.Ok().WithSuccess(token.Value);
             }

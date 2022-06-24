@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class EnderecoController : ControllerBase
     {
         private readonly IEnderecoRepository _enderecoRepository;
@@ -18,11 +20,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var enderecos = await _enderecoRepository.GetAll();
+                var enderecos = _enderecoRepository.GetAll();
 
                 if (enderecos.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadEnderecoDTO>>(enderecos));
@@ -34,11 +36,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var endereco = await _enderecoRepository.GetById(id);
+                var endereco = _enderecoRepository.GetById(id);
 
                 if (endereco != null)
                     return Ok(_mapper.Map<ReadEnderecoDTO>(endereco));
@@ -50,7 +52,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateEnderecoDTO dto)
+        public IActionResult Add([FromBody] CreateEnderecoDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateEnderecoDTO dto)
+        public IActionResult Update([FromBody] UpdateEnderecoDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +78,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _enderecoRepository.Delete(id);
+                var status = _enderecoRepository.Delete(id);
 
                 if (status)
                     return NoContent();

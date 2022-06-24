@@ -9,12 +9,13 @@ namespace LocadoraVipFilmes.Auth.API.Services
 {
     public class TokenService
     {
-        public Token CreateToken(IdentityUser<int> user) 
+        public Token CreateToken(IdentityUser<int> user, string role) 
         {
             Claim[] claims = new Claim[]
             {
                 new Claim("username", user.UserName),
-                new Claim("id", user.Id.ToString())
+                new Claim("id", user.Id.ToString()),
+                new Claim(ClaimTypes.Role, role)
             };
 
             var key = new SymmetricSecurityKey(
@@ -31,5 +32,6 @@ namespace LocadoraVipFilmes.Auth.API.Services
 
             return new Token(tokenString);
         }
+
     }
 }

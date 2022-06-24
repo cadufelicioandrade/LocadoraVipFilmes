@@ -10,8 +10,8 @@ namespace LocadoraVipFilmes.Data.Interfaces
     {
         void Add(TEntity entity);
         void Update(TEntity entity);
-        Task<bool> Delete(int id);
-        Task<TEntity> GetById(int id);
-        Task<IEnumerable<TEntity>> GetAll();
+        bool Delete(int id);
+        TEntity GetById(int id);
+        IEnumerable<TEntity> GetAll();
     }
 }

@@ -20,11 +20,11 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var filmes = await _filmeRepository.GetAll();
+                var filmes = _filmeRepository.GetAll();
 
                 if (filmes.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadFilmeDTO>>(filmes));
@@ -36,11 +36,11 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var filme = await _filmeRepository.GetById(id);
+                var filme = _filmeRepository.GetById(id);
 
                 if (filme != null)
                     return Ok(_mapper.Map<ReadFilmeDTO>(filme));
@@ -52,7 +52,7 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateFilmeDTO dto)
+        public IActionResult Add([FromBody] CreateFilmeDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateFilmeDTO dto)
+        public IActionResult Update([FromBody] UpdateFilmeDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -78,11 +78,11 @@ namespace LocadoraVipFilmes.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _filmeRepository.Delete(id);
+                var status = _filmeRepository.Delete(id);
 
                 if (status)
                     return NoContent();

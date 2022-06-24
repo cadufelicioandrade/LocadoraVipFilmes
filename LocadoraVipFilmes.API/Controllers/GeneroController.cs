@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class GeneroController : ControllerBase
     {
         private readonly IGeneroRepository _generoRepository;
@@ -18,11 +20,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var generos = await _generoRepository.GetAll();
+                var generos = _generoRepository.GetAll();
 
                 if (generos.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadGeneroDTO>>(generos));
@@ -34,11 +36,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var genero = await _generoRepository.GetById(id);
+                var genero = _generoRepository.GetById(id);
 
                 if (genero != null)
                     return Ok(_mapper.Map<ReadGeneroDTO>(genero));
@@ -50,7 +52,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateGeneroDTO dto)
+        public IActionResult Add([FromBody] CreateGeneroDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateGeneroDTO dto)
+        public IActionResult Update([FromBody] UpdateGeneroDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +78,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _generoRepository.Delete(id);
+                var status = _generoRepository.Delete(id);
 
                 if (status)
                     return NoContent();

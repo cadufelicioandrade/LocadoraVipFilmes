@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PedidoController : ControllerBase
     {
         private readonly IPedidoRepository _pedidoRepository;
@@ -18,11 +20,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var pedidos = await _pedidoRepository.GetAll();
+                var pedidos = _pedidoRepository.GetAll();
 
                 if (pedidos.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadPedidoDTO>>(pedidos));
@@ -34,11 +36,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public IActionResult GetById(int id)
         {
             if (ModelState.IsValid)
             {
-                var pedido = await _pedidoRepository.GetById(id);
+                var pedido = _pedidoRepository.GetById(id);
 
                 if (pedido != null)
                     return Ok(_mapper.Map<ReadPedidoDTO>(pedido));
@@ -50,7 +52,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreatePedidoDTO dto)
+        public IActionResult Add([FromBody] CreatePedidoDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +65,7 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdatePedidoDTO dto)
+        public IActionResult Update([FromBody] UpdatePedidoDTO dto)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +78,11 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                var status = await _pedidoRepository.Delete(id);
+                var status = _pedidoRepository.Delete(id);
 
                 if (status)
                     return NoContent();

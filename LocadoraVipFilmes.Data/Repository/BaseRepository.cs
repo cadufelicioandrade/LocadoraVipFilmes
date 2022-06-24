@@ -18,39 +18,39 @@ namespace LocadoraVipFilmes.Data.Repository
             _context = context;
         }
 
-        public async void Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task<bool> Delete(int id)
+        public bool Delete(int id)
         {
-            var entity = this.GetById(id).Result;
+            var entity = this.GetById(id);
 
             if(entity != null)
             {
                  _context.Set<TEntity>().Remove(entity);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return true;
             }
             return false;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
-            return await _context.Set<TEntity>().ToListAsync();
+            return _context.Set<TEntity>().ToList();
         }
 
-        public async Task<TEntity> GetById(int id)
+        public TEntity GetById(int id)
         {
-            return await _context.Set<TEntity>().FindAsync(id);
+            return _context.Set<TEntity>().Find(id);
         }
 
-        public async void Update(TEntity entity)
+        public void Update(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

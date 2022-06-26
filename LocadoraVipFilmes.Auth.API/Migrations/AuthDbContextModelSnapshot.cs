@@ -50,6 +50,29 @@ namespace LocadoraVipFilmes.Auth.API.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 99999,
+                            ConcurrencyStamp = "d559aff5-355a-47dc-a747-5c761fbb0ce4",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = 99998,
+                            ConcurrencyStamp = "1c34fa43-e391-435b-bfa4-188ec8881518",
+                            Name = "funcionario",
+                            NormalizedName = "FUNCIONARIO"
+                        },
+                        new
+                        {
+                            Id = 99997,
+                            ConcurrencyStamp = "b4af667b-e4ca-43ef-a11f-0ea360719593",
+                            Name = "cliente",
+                            NormalizedName = "CLIENTE"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -142,6 +165,24 @@ namespace LocadoraVipFilmes.Auth.API.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 99999,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "99d06f71-48cd-4909-bce5-4c7f1b4acdf2",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFaoLinul7XWrKoBGphEyKkJh7f0PFmLl+sUhaF8MgV+lvQ3TXw1BU12CvL03uDeMA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3e23466c-8044-4348-b974-299d6841c4af",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
@@ -202,6 +243,13 @@ namespace LocadoraVipFilmes.Auth.API.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 99999,
+                            RoleId = 99999
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>

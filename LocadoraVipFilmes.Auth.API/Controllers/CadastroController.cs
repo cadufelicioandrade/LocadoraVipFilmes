@@ -1,5 +1,6 @@
 using FluentResults;
 using LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO;
+using LocadoraVipFilmes.Auth.API.Enums;
 using LocadoraVipFilmes.Auth.API.Interfaces;
 using LocadoraVipFilmes.Auth.API.Requests;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +18,10 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
-        [HttpPost]
-        public IActionResult CreateUser([FromBody] CreateUsuarioDTO createUsuario)
+        [HttpPost("{eTipo}")]
+        public IActionResult CreateUser(eTipoCadastro eTipo, [FromBody] CreateUsuarioDTO createUsuario)
         {
-            Result result = _usuarioRepository.CadastrarUsuario(createUsuario);
+            Result result = _usuarioRepository.CadastrarUsuario(createUsuario, eTipo);
 
             if (result.IsFailed)
                 return StatusCode(500);

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentResults;
 using LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO;
+using LocadoraVipFilmes.Auth.API.Enums;
 using LocadoraVipFilmes.Auth.API.Interfaces;
 using LocadoraVipFilmes.Auth.API.Model;
 using LocadoraVipFilmes.Auth.API.Requests;
@@ -28,7 +29,7 @@ namespace LocadoraVipFilmes.Auth.API.Repository
             _roleManager = roleManager;
         }
 
-        public Result CadastrarUsuario(CreateUsuarioDTO createUsuario)
+        public Result CadastrarUsuario(CreateUsuarioDTO createUsuario, eTipoCadastro eTipo)
         {
             Usuario usuario = _mapper.Map<Usuario>(createUsuario);
             IdentityUser<int> identityUser = _mapper.Map<IdentityUser<int>>(usuario);
@@ -37,10 +38,19 @@ namespace LocadoraVipFilmes.Auth.API.Repository
 
             if (resultadoIdentity.Result.Succeeded)
             {
-                //Cria a role para o usuário
-                var createRoleResult = _roleManager.CreateAsync(new IdentityRole<int>("admin")).Result;
-                //Add role para o usuário
-                var userRoleResult = _userManager.AddToRoleAsync(identityUser, "admin").Result;
+                var rolesAccess = _roleManager.Roles.Where(r => r.Name == "funcionario"
+                                                        || r.Name == "cliente").ToList();
+
+                if (eTipoCadastro.funcionario == eTipo)
+                {
+                    //Add role para o usuário funcionário
+                    var userRoleResult = _userManager.AddToRoleAsync(identityUser, "funcionario").Result;
+                }
+                else if (eTipoCadastro.cliente == eTipo)
+                {
+                    //Add role para o usuário cliente
+                    var userRoleResult = _userManager.AddToRoleAsync(identityUser, "funcionario").Result;
+                }
 
                 var code = _userManager.GenerateEmailConfirmationTokenAsync(identityUser).Result;
                 var encodedCode = HttpUtility.UrlEncode(code);

@@ -10,9 +10,9 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
     [Route("[controller]")]
     public class CadastroController : ControllerBase
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly ICreateUserRepository _usuarioRepository;
 
-        public CadastroController(IUsuarioRepository usuarioRepository)
+        public CadastroController(ICreateUserRepository usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
         }

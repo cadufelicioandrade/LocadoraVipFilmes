@@ -31,7 +31,7 @@ builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>(options =>
 
 #region dependency injection
 builder.Services.AddScoped<AuthDbContext>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<ICreateUserRepository, CreateUserRepository>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<TokenService, TokenService>();
 builder.Services.AddScoped<EmailService, EmailService>();

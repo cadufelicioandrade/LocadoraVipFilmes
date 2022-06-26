@@ -3,7 +3,10 @@ using LocadoraVipFilmes.API.AutoMapper;
 using LocadoraVipFilmes.Data.Context;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Data.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,30 @@ builder.Services.AddDbContext<LocadoraContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection"));
 });
+#endregion
+
+#region Authentications 
+
+builder.Services.AddAuthentication(auth =>
+{
+    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(token =>
+    {
+        token.RequireHttpsMetadata = false;
+        token.SaveToken = true;
+        token.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes
+                                        ("0esad3asdf03lsiepqa847aoeiu23oaiacnzmb8eyrus")),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
 #endregion
 
 #region dependency injection
@@ -49,10 +76,10 @@ if (app.Environment.IsDevelopment())
     //app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 app.MapControllers();
 
 app.Run();

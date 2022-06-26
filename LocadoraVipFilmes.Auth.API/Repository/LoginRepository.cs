@@ -28,6 +28,7 @@ namespace LocadoraVipFilmes.Auth.API.Repository
                 var identityUser = _signManager.UserManager.Users
                         .FirstOrDefault(user => user.NormalizedUserName == request.Username.ToUpper());
 
+                //recupera role do usuário
                 var roleUserResult = _signManager.UserManager.GetRolesAsync(identityUser)
                                                              .Result.FirstOrDefault();
 

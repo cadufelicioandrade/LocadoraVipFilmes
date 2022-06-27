@@ -12,7 +12,7 @@
     "LocadoraVipFilmes.Auth.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5121", //https://localhost:7121;
+      "applicationUrl": "http://localhost:5001", //https://localhost:7121;
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -38,9 +38,6 @@ namespace LocadoraVipFilmes.Auth.API.Repository
 
             if (resultadoIdentity.Result.Succeeded)
             {
-                var rolesAccess = _roleManager.Roles.Where(r => r.Name == "funcionario"
-                                                        || r.Name == "cliente").ToList();
-
                 if (eTipoCadastro.funcionario == eTipo)
                 {
                     //Add role para o usuário funcionário

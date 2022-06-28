@@ -1,2 +1,2 @@
 # LocadoraVipFilmes
-Desenvolvimento de API REST com .Net Core 6, Entity Framework Core, JWT e Identity.
+REST API development with .Net Core 6, Entity Framework Core, JWT and Identity.

@@ -2,12 +2,14 @@ using AutoMapper;
 using LocadoraVipFilmes.API.DTOs.FilmeDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class FilmeController : ControllerBase
     {
         private readonly IFilmeRepository _filmeRepository;

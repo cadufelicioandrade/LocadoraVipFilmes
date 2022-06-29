@@ -2,12 +2,14 @@
 using LocadoraVipFilmes.API.DTOs.EnderecoDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class EnderecoController : ControllerBase
     {
         private readonly IEnderecoRepository _enderecoRepository;

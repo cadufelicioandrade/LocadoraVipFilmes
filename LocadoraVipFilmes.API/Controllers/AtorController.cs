@@ -9,6 +9,7 @@ namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class AtorController : ControllerBase
     {
         private readonly IAtorRepository _atorRepository;

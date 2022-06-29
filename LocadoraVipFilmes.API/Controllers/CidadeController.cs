@@ -2,12 +2,14 @@
 using LocadoraVipFilmes.API.DTOs.CidadeDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class CidadeController : ControllerBase
     {
         private readonly ICidadeRepository _cidadeRepository;

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LocadoraVipFilmes.Auth.API.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO
 {
@@ -16,6 +18,10 @@ namespace LocadoraVipFilmes.Auth.API.DTOs.UsuarioDTO
         [Required]
         [Compare("Password", ErrorMessage ="As senhas precisam ser iguais.")]
         public string RePassword { get; set; }
+
+        [NotMapped]
+        public eTipoCadastro TipoCadastro { get; set; }
+
 
     }
 }

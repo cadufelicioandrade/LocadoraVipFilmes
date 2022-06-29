@@ -18,10 +18,10 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
-        [HttpPost("{eTipo}")]
-        public IActionResult CreateUser(eTipoCadastro eTipo, [FromBody] CreateUsuarioDTO createUsuario)
+        [HttpPost]
+        public IActionResult CreateUser([FromBody] CreateUsuarioDTO createUsuario)
         {
-            Result result = _usuarioRepository.CadastrarUsuario(createUsuario, eTipo);
+            Result result = _usuarioRepository.CadastrarUsuario(createUsuario);
 
             if (result.IsFailed)
                 return StatusCode(500);

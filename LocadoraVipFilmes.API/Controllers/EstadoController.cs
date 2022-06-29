@@ -9,6 +9,7 @@ namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class EstadoController : ControllerBase
     {
         private readonly IEstadoRepository _estadoRepository;
@@ -21,7 +22,6 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="admin")]
         public IActionResult GetAll()
         {
             if (ModelState.IsValid)

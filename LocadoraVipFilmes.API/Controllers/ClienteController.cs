@@ -2,12 +2,14 @@
 using LocadoraVipFilmes.API.DTOs.ClienteDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class ClienteController : ControllerBase
     {
         private readonly IClienteRepository _clienteRepository;

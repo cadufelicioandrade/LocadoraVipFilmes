@@ -2,12 +2,14 @@
 using LocadoraVipFilmes.API.DTOs.ProdutoraDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class ProdutoraController : ControllerBase
     {
         private readonly IProdutoraRepository _produtoraRepository;

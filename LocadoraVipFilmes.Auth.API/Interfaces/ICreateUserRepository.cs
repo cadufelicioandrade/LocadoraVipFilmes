@@ -7,7 +7,7 @@ namespace LocadoraVipFilmes.Auth.API.Interfaces
 {
     public interface ICreateUserRepository
     {
-        Result CadastrarUsuario(CreateUsuarioDTO createUsuario, eTipoCadastro eTipo);
+        Result CadastrarUsuario(CreateUsuarioDTO createUsuario);
         Result AtivarContaUsuario(AtivaContaRequest request);
     }
 }

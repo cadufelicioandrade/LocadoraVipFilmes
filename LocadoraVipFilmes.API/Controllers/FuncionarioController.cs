@@ -2,12 +2,14 @@
 using LocadoraVipFilmes.API.DTOs.FuncionarioDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipfuncionarios.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class FuncionarioController : ControllerBase
     {
         private readonly IFuncionarioRepository _funcionarioRepository;

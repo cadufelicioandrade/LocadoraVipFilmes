@@ -2,12 +2,14 @@
 using LocadoraVipFilmes.API.DTOs.GeneroDTO;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocadoraVipFilmes.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "admin, funcionario")]
     public class GeneroController : ControllerBase
     {
         private readonly IGeneroRepository _generoRepository;

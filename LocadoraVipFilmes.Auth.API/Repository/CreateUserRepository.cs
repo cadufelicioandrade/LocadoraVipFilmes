@@ -29,7 +29,7 @@ namespace LocadoraVipFilmes.Auth.API.Repository
             _roleManager = roleManager;
         }
 
-        public Result CadastrarUsuario(CreateUsuarioDTO createUsuario, eTipoCadastro eTipo)
+        public Result CadastrarUsuario(CreateUsuarioDTO createUsuario)
         {
             Usuario usuario = _mapper.Map<Usuario>(createUsuario);
             IdentityUser<int> identityUser = _mapper.Map<IdentityUser<int>>(usuario);
@@ -38,12 +38,12 @@ namespace LocadoraVipFilmes.Auth.API.Repository
 
             if (resultadoIdentity.Result.Succeeded)
             {
-                if (eTipoCadastro.funcionario == eTipo)
+                if (createUsuario.TipoCadastro == eTipoCadastro.funcionario)
                 {
                     //Add role para o usuário funcionário
                     var userRoleResult = _userManager.AddToRoleAsync(identityUser, "funcionario").Result;
                 }
-                else if (eTipoCadastro.cliente == eTipo)
+                else if (createUsuario.TipoCadastro == eTipoCadastro.cliente)
                 {
                     //Add role para o usuário cliente
                     var userRoleResult = _userManager.AddToRoleAsync(identityUser, "funcionario").Result;

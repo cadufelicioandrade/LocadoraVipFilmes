@@ -68,5 +68,14 @@ namespace LocadoraVipFilmes.Auth.API.Repository
             return Result.Fail("Falha ao ativar conta de usuário");
         }
 
+        public async Task<Result> GetUserByName(string username)
+        {
+            var user = _userManager.Users.Where(u => u.UserName == username).FirstOrDefault();
+
+            if(user is null)
+                return Result.Ok().WithSuccess("Usuário não existe.");
+
+            return Result.Fail("Esse usuário já existe!");
+        }
     }
 }

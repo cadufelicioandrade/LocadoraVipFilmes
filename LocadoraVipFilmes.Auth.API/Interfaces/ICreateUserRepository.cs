@@ -9,5 +9,6 @@ namespace LocadoraVipFilmes.Auth.API.Interfaces
     {
         Result CadastrarUsuario(CreateUsuarioDTO createUsuario);
         Result AtivarContaUsuario(AtivaContaRequest request);
+        Task<Result> GetUserByName(string username);
     }
 }

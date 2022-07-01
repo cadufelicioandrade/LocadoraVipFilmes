@@ -16,7 +16,6 @@ namespace LocadoraVipFilmes.API.DTOs.CidadeDTO
         public int EstadoId { get; set; }
 
         public ReadEstadoDTO ReadEstadoDTO { get; set; }
-        public List<ReadEnderecoDTO> ReadEnderecoDTOs { get; set; }
 
     }
 }

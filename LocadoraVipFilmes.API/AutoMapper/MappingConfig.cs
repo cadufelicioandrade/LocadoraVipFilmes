@@ -25,16 +25,23 @@ namespace LocadoraVipFilmes.API.AutoMapper
                 config.CreateMap<Ator, ReadAtorDTO>().ReverseMap();
                 config.CreateMap<Ator, UpdateAtorDTO>().ReverseMap();
 
-                config.CreateMap<Cidade, CreateCidadeDTO>().ReverseMap();
-                config.CreateMap<Cidade, ReadCidadeDTO>().ReverseMap();
-                config.CreateMap<Cidade, UpdateCidadeDTO>().ReverseMap();
+                config.CreateMap<Cidade, CreateCidadeDTO>().ReverseMap(); 
+                config.CreateMap<Cidade, ReadCidadeDTO>().ForMember(c => c.ReadEstadoDTO, opt =>
+                        opt.MapFrom(c => c.Estado)).ReverseMap();
+                config.CreateMap<Cidade, UpdateCidadeDTO>().ForMember(c => c.ReadEstadoDTO, opt => 
+                        opt.MapFrom(c => c.Estado)).ReverseMap();
 
-                config.CreateMap<Cliente, CreateClienteDTO>().ReverseMap();
-                config.CreateMap<Cliente, ReadClienteDTO>().ReverseMap();
-                config.CreateMap<Cliente, UpdateClienteDTO>().ReverseMap();
+                config.CreateMap<Cliente, CreateClienteDTO>().ForMember(c => c.CreateEnderecoDTO, opt =>
+                        opt.MapFrom(c => c.Endereco)).ReverseMap();
+                config.CreateMap<Cliente, ReadClienteDTO>().ForMember(c => c.ReadPedidoDTOs, opt =>
+                        opt.MapFrom(c => c.Pedidos)).ForMember(c => c.ReadEnderecoDTO, opt =>
+                        opt.MapFrom(c => c.Endereco)).ReverseMap();
+                config.CreateMap<Cliente, UpdateClienteDTO>().ForMember(c => c.UpdateEnderecoDTO, opt =>
+                        opt.MapFrom(c => c.Endereco)).ReverseMap();
 
                 config.CreateMap<Endereco, CreateEnderecoDTO>().ReverseMap();
-                config.CreateMap<Endereco, ReadEnderecoDTO>().ReverseMap();
+                config.CreateMap<Endereco, ReadEnderecoDTO>().ForMember(e => e.ReadCidadeDTO, opt =>
+                    opt.MapFrom(c => c.Cidade)).ReverseMap();
                 config.CreateMap<Endereco, UpdateEnderecoDTO>().ReverseMap();
 
                 config.CreateMap<Estado, CreateEstadoDTO>().ReverseMap();

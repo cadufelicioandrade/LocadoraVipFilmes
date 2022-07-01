@@ -14,8 +14,7 @@ namespace LocadoraVipFilmes.API.DTOs.EnderecoDTO
         public int? ClienteId { get; set; }
         public int? FuncionarioId { get; set; }
         public int CidadeId { get; set; }
-        public ReadClienteDTO ReadClienteDTO { get; set; }
-        public ReadFuncionarioDTO ReadFuncionarioDTO { get; set; }
+
         public ReadCidadeDTO ReadCidadeDTO { get; set; }
     }
 }

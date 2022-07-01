@@ -26,7 +26,7 @@ namespace LocadoraVipFilmes.Auth.API.Services
             var token = new JwtSecurityToken(
                                 claims: claims,
                                 signingCredentials: credentials,
-                                expires: DateTime.UtcNow.AddMinutes(30));
+                                expires: DateTime.UtcNow.AddMinutes(90));
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 

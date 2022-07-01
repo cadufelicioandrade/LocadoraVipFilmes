@@ -51,6 +51,7 @@ builder.Services.AddAuthentication(auth =>
 builder.Services.AddScoped<LocadoraContext>();
 builder.Services.AddScoped<IAtorRepository, AtorRepository>();
 builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
 builder.Services.AddScoped<IEstadoRepository, EstadoRepository>();

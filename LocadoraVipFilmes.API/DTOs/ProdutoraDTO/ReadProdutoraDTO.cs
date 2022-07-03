@@ -7,6 +7,5 @@ namespace LocadoraVipFilmes.API.DTOs.ProdutoraDTO
         public int Id { get; set; }
 
         public string NomeProdutora { get; set; }
-        public List<ReadFilmeDTO> ReadFilmeDTOs { get; set; }
     }
 }

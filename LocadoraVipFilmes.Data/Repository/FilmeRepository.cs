@@ -14,5 +14,13 @@ namespace LocadoraVipFilmes.Data.Repository
         public FilmeRepository(LocadoraContext context) : base(context)
         {
         }
+
+        public void AddFilmeAtor(int filmeId, List<Ator> ators)
+        {
+            foreach (Ator ator in ators)
+                _context.FilmeAtores.Add(new FilmeAtor() { AtorId = ator.Id, FilmeId = filmeId});
+
+            _context.SaveChanges();
+        }
     }
 }

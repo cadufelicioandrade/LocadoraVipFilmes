@@ -11,7 +11,7 @@ namespace LocadoraVipFilmes.Dominio.Model
     {
         public Filme()
         {
-
+            this.DtInclusao = DateTime.Now;
         }
 
         [Required(ErrorMessage = "O campo Título é obrigatório.")]

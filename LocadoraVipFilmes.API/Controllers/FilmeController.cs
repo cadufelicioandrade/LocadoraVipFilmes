@@ -59,7 +59,13 @@ namespace LocadoraVipFilmes.Controllers
             if (ModelState.IsValid)
             {
                 var filme = _mapper.Map<Filme>(dto);
+                filme.DtInclusao = DateTime.Now;
                 _filmeRepository.Add(filme);
+
+                var atores = _mapper.Map<List<Ator>>(dto.ReadAtorDTOs);
+
+                _filmeRepository.AddFilmeAtor(filme.Id, atores);
+
                 return CreatedAtAction(nameof(GetById), new { Id = filme.Id }, filme);
             }
 

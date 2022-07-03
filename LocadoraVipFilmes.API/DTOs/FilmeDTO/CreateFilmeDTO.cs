@@ -1,7 +1,4 @@
-﻿using LocadoraVipFilmes.API.DTOs.FilmeAtorDTO;
-using LocadoraVipFilmes.API.DTOs.GeneroDTO;
-using LocadoraVipFilmes.API.DTOs.PedidoFilmeDTO;
-using LocadoraVipFilmes.API.DTOs.ProdutoraDTO;
+﻿using LocadoraVipFilmes.API.DTOs.AtorDTO;
 
 namespace LocadoraVipFilmes.API.DTOs.FilmeDTO
 {
@@ -16,9 +13,7 @@ namespace LocadoraVipFilmes.API.DTOs.FilmeDTO
         public double ValorLocacao { get; set; }
         public int GeneroId { get; set; }
         public int ProdutoraId { get; set; }
-        public ReadGeneroDTO ReadGeneroDTO { get; set; }
-        public ReadProdutoraDTO ReadProdutoraDTO { get; set; }
-        public List<ReadFilmeAtorDTO> ReadFilmeAtorDTOs { get; set; }
-        public List<ReadPedidoFilmeDTO>  ReadPedidoFilmeDTOs { get; set; }
+
+        public List<ReadAtorDTO> ReadAtorDTOs { get; set; }
     }
 }

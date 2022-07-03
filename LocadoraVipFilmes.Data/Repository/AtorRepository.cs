@@ -15,11 +15,10 @@ namespace LocadoraVipFilmes.Data.Repository
         {
         }
 
-        public async void AdicionarFilmeAtor(Ator ator)
+        public void AdicionarFilmeAtor(Ator ator)
         {
             _context.Atores.Add(ator);
-            _context.FilmeAtores.AddRange(ator.FilmeAtors);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
     }
 }

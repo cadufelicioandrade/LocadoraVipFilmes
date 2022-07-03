@@ -60,7 +60,7 @@ namespace LocadoraVipFilmes.API.Controllers
             if (ModelState.IsValid)
             {
                 var ator = _mapper.Map<Ator>(dto);
-                _atorRepository.AdicionarFilmeAtor(ator);
+                _atorRepository.Add(ator);
                 return CreatedAtAction(nameof(GetById), new { Id = ator.Id }, ator);
             }
 

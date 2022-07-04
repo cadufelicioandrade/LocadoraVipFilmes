@@ -22,7 +22,8 @@ namespace LocadoraVipFilmes.API.AutoMapper
             var mappingConfig = new MapperConfiguration(config =>
             {
                 config.CreateMap<Ator, CreateAtorDTO>().ReverseMap();
-                config.CreateMap<Ator, ReadAtorDTO>().ReverseMap();
+                config.CreateMap<Ator, ReadAtorDTO>().ForMember(a => a.ReadFilmeAtorDTOs, opt =>
+                opt.MapFrom(a => a.FilmeAtors)).ReverseMap();
                 config.CreateMap<Ator, UpdateAtorDTO>().ReverseMap();
 
                 config.CreateMap<Cidade, CreateCidadeDTO>().ReverseMap(); 
@@ -49,11 +50,19 @@ namespace LocadoraVipFilmes.API.AutoMapper
                 config.CreateMap<Estado, UpdateEstadoDTO>().ReverseMap();
 
                 config.CreateMap<FilmeAtor, CreateFilmeAtorDTO>().ReverseMap();
-                config.CreateMap<FilmeAtor, ReadFilmeAtorDTO>().ReverseMap();
+                config.CreateMap<FilmeAtor, ReadFilmeAtorDTO>().ForMember(f => f.ReadFilmeDTO, opt =>
+                opt.MapFrom(f => f.Filme)).ForMember(f => f.ReadAtorDTO, opt =>
+                opt.MapFrom(f => f.Ator)).ReverseMap();
                 config.CreateMap<FilmeAtor, UpdateFilmeAtorDTO>().ReverseMap();
 
                 config.CreateMap<Filme, CreateFilmeDTO>().ReverseMap();
-                config.CreateMap<Filme, ReadFilmeDTO>().ReverseMap();
+                config.CreateMap<Filme, ReadFilmeDTO>()
+                    .ForMember(f => f.ReadGeneroDTO, opt =>
+                opt.MapFrom(f => f.Genero))
+                    .ForMember(f => f.ReadProdutoraDTO, opt =>
+                opt.MapFrom(f => f.Produtora))
+                    .ForMember(f => f.ReadPedidoFilmeDTOs, opt =>
+                opt.MapFrom(f => f.PedidoFilmes)).ReverseMap();
                 config.CreateMap<Filme, UpdateFilmeDTO>().ReverseMap();
 
                 config.CreateMap<Funcionario, CreateFuncionarioDTO>().ReverseMap();
@@ -64,7 +73,8 @@ namespace LocadoraVipFilmes.API.AutoMapper
                 config.CreateMap<Genero, ReadGeneroDTO>().ReverseMap();
                 config.CreateMap<Genero, UpdateGeneroDTO>().ReverseMap();
 
-                config.CreateMap<Pedido, CreatePedidoDTO>().ReverseMap();
+                config.CreateMap<Pedido, CreatePedidoDTO>().ForMember(p => p.CreatePedidoFilmeDTOs, opt => 
+                opt.MapFrom(p => p.PedidoFilmes)).ReverseMap();
                 config.CreateMap<Pedido, ReadPedidoDTO>().ReverseMap();
                 config.CreateMap<Pedido, UpdatePedidoDTO>().ReverseMap();
 

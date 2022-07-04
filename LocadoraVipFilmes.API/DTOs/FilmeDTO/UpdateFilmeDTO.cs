@@ -17,9 +17,5 @@ namespace LocadoraVipFilmes.API.DTOs.FilmeDTO
         public double ValorLocacao { get; set; }
         public int GeneroId { get; set; }
         public int ProdutoraId { get; set; }
-        public ReadGeneroDTO ReadGeneroDTO { get; set; }
-        public ReadProdutoraDTO ReadProdutoraDTO { get; set; }
-        public List<ReadFilmeAtorDTO> ReadFilmeAtorDTOs { get; set; }
-        public List<ReadPedidoFilmeDTO> ReadPedidoFilmeDTOs { get; set; }
     }
 }

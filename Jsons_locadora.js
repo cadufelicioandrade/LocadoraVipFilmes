@@ -111,3 +111,26 @@
 		}
 	]
 }
+
+//PEDIDOS
+
+//CreatePedidoDTO
+{
+	"DtPedido": "2022-07-03",
+	"QtdFilme":2,
+	"ValorTotal":24,
+	"ClienteId":4,
+	"FuncionarioId":1,
+	"CreatePedidoFilmeDTOs":[
+		{
+			"ValorUnitario":12,
+			"PedidoId":0,
+			"FilmeId":1
+		},
+		{
+			"ValorUnitario":12,
+			"PedidoId":0,
+			"FilmeId":2
+		}
+	]
+}

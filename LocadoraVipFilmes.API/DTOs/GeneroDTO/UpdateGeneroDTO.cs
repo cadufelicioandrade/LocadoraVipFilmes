@@ -6,6 +6,5 @@ namespace LocadoraVipFilmes.API.DTOs.GeneroDTO
     {
         public int Id { get; set; }
         public string NomeGenero { get; set; }
-        public List<ReadFilmeDTO> ReadFilmeDTOs { get; set; }
     }
 }

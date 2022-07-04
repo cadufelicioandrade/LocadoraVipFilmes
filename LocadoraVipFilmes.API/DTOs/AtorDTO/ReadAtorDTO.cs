@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocadoraVipFilmes.API.DTOs.FilmeAtorDTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,6 @@ namespace LocadoraVipFilmes.API.DTOs.AtorDTO
         public string NomeAtor { get; set; }
         public string SobreNome { get; set; }
         public DateTime DtNascimento { get; set; }
+        public virtual List<ReadFilmeAtorDTO> ReadFilmeAtorDTOs { get; set; }
     }
 }

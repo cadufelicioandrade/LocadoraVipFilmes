@@ -16,6 +16,5 @@ namespace LocadoraVipFilmes.API.DTOs.FuncionarioDTO
         public DateTime DtNascimento { get; set; }
         public bool Ativo { get; set; }
         public ReadEnderecoDTO ReadEnderecoDTO { get; set; }
-        public List<ReadPedidoDTO> ReadPedidoDTOs { get; set; }
     }
 }

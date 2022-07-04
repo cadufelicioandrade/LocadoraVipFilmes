@@ -9,6 +9,5 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IPedidoRepository : IBaseRepository<Pedido>
     {
-        void AdicionarPedidoFilme(Pedido pedido);
     }
 }

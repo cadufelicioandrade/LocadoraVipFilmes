@@ -27,7 +27,7 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var atores = _atorRepository.GetAll();
+                var atores = _atorRepository.GetAtoresFilmes();
 
                 if (atores.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadAtorDTO>>(atores));
@@ -43,7 +43,7 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var ator = _atorRepository.GetById(id);
+                var ator = _atorRepository.GetAtoresFilmes(id);
 
                 if(ator != null)
                     return Ok(_mapper.Map<ReadAtorDTO>(ator));

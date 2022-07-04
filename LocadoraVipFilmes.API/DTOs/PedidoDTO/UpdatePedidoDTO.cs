@@ -12,8 +12,6 @@ namespace LocadoraVipFilmes.API.DTOs.PedidoDTO
         public double ValorTotal { get; set; }
         public int ClienteId { get; set; }
         public int FuncionarioId { get; set; }
-        public ReadClienteDTO ReadClienteDTO { get; set; }
-        public List<ReadPedidoFilmeDTO> ReadPedidoFilmeDTOs { get; set; }
-        public ReadFuncionarioDTO ReadFuncionarioDTO { get; set; }
+        public List<UpdatePedidoFilmeDTO> UpdatePedidoFilmeDTOs { get; set; }
     }
 }

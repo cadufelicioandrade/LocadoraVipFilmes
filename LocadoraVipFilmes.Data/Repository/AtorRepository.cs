@@ -1,6 +1,7 @@
 ﻿using LocadoraVipFilmes.Data.Context;
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,23 @@ namespace LocadoraVipFilmes.Data.Repository
         {
         }
 
-        public void AdicionarFilmeAtor(Ator ator)
+        public List<Ator> GetAtoresFilmes(int? id = null)
         {
-            _context.Atores.Add(ator);
-            _context.SaveChangesAsync();
+            var list = new List<Ator>();
+
+            if (id.HasValue)
+                list = _context.Atores
+                                    .Include(a => a.FilmeAtors)
+                                    .ThenInclude(fa => fa.Filme)
+                                    .Where(a => a.Id == id.Value)
+                                    .ToList();
+            else
+                list = _context.Atores
+                                    .Include(a => a.FilmeAtors)
+                                    .ThenInclude(fa => fa.Filme)
+                                    .ToList();
+
+            return list;
         }
     }
 }

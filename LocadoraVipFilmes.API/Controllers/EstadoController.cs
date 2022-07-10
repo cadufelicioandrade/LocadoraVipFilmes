@@ -26,7 +26,7 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                IEnumerable<Estado> estados = _estadoRepository.GetAll();
+                List<Estado> estados = _estadoRepository.GetEstados();
 
                 if (estados.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadEstadoDTO>>(estados));
@@ -42,10 +42,13 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var estado = _estadoRepository.GetById(id);
+                var estado = _estadoRepository.GetEstadoById(id);
 
                 if (estado != null)
-                    return Ok(_mapper.Map<ReadEstadoDTO>(estado));
+                {
+                    var readEstado = _mapper.Map<ReadEstadoDTO>(estado);
+                    return Ok(readEstado);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }

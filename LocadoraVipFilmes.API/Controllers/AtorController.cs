@@ -22,15 +22,17 @@ namespace LocadoraVipFilmes.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "admin")]
         public IActionResult GetAll()
         {
             if (ModelState.IsValid)
             {
-                var atores = _atorRepository.GetAtoresFilmes();
+                List<Ator> atores = _atorRepository.GetAllAtoresFilmes();
 
                 if (atores.Count() > 0)
-                    return Ok(_mapper.Map<IEnumerable<ReadAtorDTO>>(atores));
+                {
+                    var readAtores = _mapper.Map<IEnumerable<ReadAtorDTO>>(atores);
+                    return Ok(readAtores);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -43,10 +45,14 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var ator = _atorRepository.GetAtoresFilmes(id);
+                Ator ator = _atorRepository.GetAtoresFilmes(id);
 
                 if(ator != null)
-                    return Ok(_mapper.Map<ReadAtorDTO>(ator));
+                {
+                    var readAtor = _mapper.Map<ReadAtorDTO>(ator);
+
+                    return Ok(readAtor);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }

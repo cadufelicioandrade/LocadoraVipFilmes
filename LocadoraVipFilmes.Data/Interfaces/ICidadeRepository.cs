@@ -9,5 +9,7 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface ICidadeRepository: IBaseRepository<Cidade>
     {
+        List<Cidade> GetCidades();
+        Cidade GetCidadeById(int id);
     }
 }

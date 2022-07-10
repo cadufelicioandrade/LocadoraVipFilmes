@@ -9,5 +9,7 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IEstadoRepository : IBaseRepository<Estado>
     {
+        List<Estado> GetEstados();
+        Estado GetEstadoById(int Id);
     }
 }

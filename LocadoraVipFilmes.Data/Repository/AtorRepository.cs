@@ -16,23 +16,34 @@ namespace LocadoraVipFilmes.Data.Repository
         {
         }
 
-        public List<Ator> GetAtoresFilmes(int? id = null)
+        public Ator GetAtoresFilmes(int id)
+        {
+            var ator = new Ator();
+
+            ator = _context.Atores
+                            .Include(a => a.FilmeAtors)
+                            .Include("FilmeAtors.Filme")
+                            .Include("FilmeAtors.Filme.Genero")
+                            .Include("FilmeAtors.Filme.Produtora")
+                            .FirstOrDefault();
+
+            return ator;
+        }
+
+        public List<Ator> GetAllAtoresFilmes()
         {
             var list = new List<Ator>();
 
-            if (id.HasValue)
-                list = _context.Atores
-                                    .Include(a => a.FilmeAtors)
-                                    .ThenInclude(fa => fa.Filme)
-                                    .Where(a => a.Id == id.Value)
-                                    .ToList();
-            else
-                list = _context.Atores
-                                    .Include(a => a.FilmeAtors)
-                                    .ThenInclude(fa => fa.Filme)
-                                    .ToList();
+            list = _context.Atores
+                            .Include(a => a.FilmeAtors)
+                            .Include("FilmeAtors.Filme")
+                            .Include("FilmeAtors.Filme.Genero")
+                            .Include("FilmeAtors.Filme.Produtora")
+                            .ToList();
 
             return list;
+
         }
+
     }
 }

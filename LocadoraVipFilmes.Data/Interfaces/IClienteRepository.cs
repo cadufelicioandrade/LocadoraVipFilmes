@@ -9,5 +9,7 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IClienteRepository : IBaseRepository<Cliente>
     {
+        List<Cliente> GetClientes();
+        Cliente GetClienteById(int id);
     }
 }

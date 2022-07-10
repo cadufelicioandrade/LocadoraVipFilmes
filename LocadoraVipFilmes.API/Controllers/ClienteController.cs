@@ -26,7 +26,7 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var clientes = _clienteRepository.GetAll();
+                var clientes = _clienteRepository.GetClientes();
 
                 if (clientes.Count() > 0)
                     return Ok(_mapper.Map<IEnumerable<ReadClienteDTO>>(clientes));
@@ -42,7 +42,7 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cliente = _clienteRepository.GetById(id);
+                var cliente = _clienteRepository.GetClienteById(id);
 
                 if (cliente != null)
                     return Ok(_mapper.Map<ReadClienteDTO>(cliente));

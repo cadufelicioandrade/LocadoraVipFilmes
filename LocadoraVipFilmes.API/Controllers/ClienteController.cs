@@ -29,7 +29,10 @@ namespace LocadoraVipFilmes.API.Controllers
                 var clientes = _clienteRepository.GetClientes();
 
                 if (clientes.Count() > 0)
-                    return Ok(_mapper.Map<IEnumerable<ReadClienteDTO>>(clientes));
+                {
+                    var readClientes = _mapper.Map<IEnumerable<ReadClienteDTO>>(clientes);
+                    return Ok(readClientes);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -45,7 +48,10 @@ namespace LocadoraVipFilmes.API.Controllers
                 var cliente = _clienteRepository.GetClienteById(id);
 
                 if (cliente != null)
-                    return Ok(_mapper.Map<ReadClienteDTO>(cliente));
+                {
+                    var readCliente = _mapper.Map<ReadClienteDTO>(cliente);
+                    return Ok(readCliente);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }

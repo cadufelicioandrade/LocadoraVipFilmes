@@ -29,7 +29,10 @@ namespace LocadoraVipFilmes.API.Controllers
                 var enderecos = _enderecoRepository.GetAll();
 
                 if (enderecos.Count() > 0)
-                    return Ok(_mapper.Map<IEnumerable<ReadEnderecoDTO>>(enderecos));
+                {
+                    var readEnderecos = _mapper.Map<IEnumerable<ReadEnderecoDTO>>(enderecos);
+                    return Ok(readEnderecos);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -45,7 +48,48 @@ namespace LocadoraVipFilmes.API.Controllers
                 var endereco = _enderecoRepository.GetById(id);
 
                 if (endereco != null)
-                    return Ok(_mapper.Map<ReadEnderecoDTO>(endereco));
+                {
+                    var readEndereco = _mapper.Map<ReadEnderecoDTO>(endereco);
+                    return Ok(readEndereco);
+                }
+
+                return Ok("Nenhum iten localizado.");
+            }
+
+            return BadRequest("Validar se todos campos estão corretos.");
+        }
+
+        [HttpGet("{clienteId}")]
+        public IActionResult GetEnderecoByClienteId(int clienteId)
+        {
+            if (ModelState.IsValid)
+            {
+                var endereco = _enderecoRepository.GetEnderecoByClienteId(clienteId);
+
+                if (endereco != null)
+                {
+                    var readEndereco = _mapper.Map<ReadEnderecoDTO>(endereco);
+                    return Ok(readEndereco);
+                }
+
+                return Ok("Nenhum iten localizado.");
+            }
+
+            return BadRequest("Validar se todos campos estão corretos.");
+        }
+
+        [HttpGet("{funcionarioId}")]
+        public IActionResult GetEnderecoByFuncionarioId(int funcionarioId)
+        {
+            if (ModelState.IsValid)
+            {
+                var endereco = _enderecoRepository.GetEnderecoByFuncionarioId(funcionarioId);
+
+                if (endereco != null)
+                {
+                    var readEndereco = _mapper.Map<ReadEnderecoDTO>(endereco);
+                    return Ok(readEndereco);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }

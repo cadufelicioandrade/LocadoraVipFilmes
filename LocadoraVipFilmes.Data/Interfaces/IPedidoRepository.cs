@@ -9,5 +9,8 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IPedidoRepository : IBaseRepository<Pedido>
     {
+        Pedido GetPedido(int id);
+        List<Pedido> GetPedidos();
+        Pedido GetPedidoByNumero(long numeroPedido);
     }
 }

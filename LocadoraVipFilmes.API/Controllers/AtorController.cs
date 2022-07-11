@@ -50,7 +50,6 @@ namespace LocadoraVipFilmes.API.Controllers
                 if(ator != null)
                 {
                     var readAtor = _mapper.Map<ReadAtorDTO>(ator);
-
                     return Ok(readAtor);
                 }
 

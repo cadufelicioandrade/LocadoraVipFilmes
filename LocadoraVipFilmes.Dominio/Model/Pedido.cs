@@ -25,6 +25,8 @@ namespace LocadoraVipFilmes.Dominio.Model
         [MinLength(0, ErrorMessage = "O ValorTotal não pode ter menos de 0.")]
         public double ValorTotal { get; set; }
 
+        [Required]
+        public long NumeroPedido { get; set; }
 
         [Required(ErrorMessage = "O campo ClienteId é obrigatório.")]
         public int ClienteId { get; set; }

@@ -2,11 +2,6 @@
 using LocadoraVipFilmes.Data.Interfaces;
 using LocadoraVipFilmes.Dominio.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVipFilmes.Data.Repository
 {

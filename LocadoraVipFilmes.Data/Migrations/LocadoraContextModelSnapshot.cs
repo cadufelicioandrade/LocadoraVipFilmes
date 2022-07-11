@@ -363,6 +363,9 @@ namespace LocadoraVipFilmes.Data.Migrations
                     b.Property<int>("FuncionarioId")
                         .HasColumnType("int");
 
+                    b.Property<long>("NumeroPedido")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("QtdFilme")
                         .HasColumnType("int");
 

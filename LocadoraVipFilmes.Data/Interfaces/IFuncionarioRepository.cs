@@ -9,5 +9,7 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IFuncionarioRepository : IBaseRepository<Funcionario>
     {
+        Funcionario GetFuncionario(int id);
+        List<Funcionario> GetFuncionarios();
     }
 }

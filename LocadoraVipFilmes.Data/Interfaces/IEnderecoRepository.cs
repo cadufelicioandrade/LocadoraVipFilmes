@@ -9,5 +9,7 @@ namespace LocadoraVipFilmes.Data.Interfaces
 {
     public interface IEnderecoRepository : IBaseRepository<Endereco>
     {
+        Endereco GetEnderecoByClienteId(int clienteId);
+        Endereco GetEnderecoByFuncionarioId(int funcionarioId);
     }
 }

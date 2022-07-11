@@ -14,5 +14,23 @@ namespace LocadoraVipFilmes.Data.Repository
         public EnderecoRepository(LocadoraContext context) : base(context)
         {
         }
+
+        public Endereco GetEnderecoByClienteId(int clienteId)
+        {
+            var endereco = _context.Enderecos
+                                .Where(e => e.ClienteId == clienteId)
+                                .FirstOrDefault();
+
+            return endereco;
+        }
+
+        public Endereco GetEnderecoByFuncionarioId(int funcionarioId)
+        {
+            var endereco = _context.Enderecos
+                                .Where(e => e.FuncionarioId == funcionarioId)
+                                .FirstOrDefault();
+
+            return endereco;
+        }
     }
 }

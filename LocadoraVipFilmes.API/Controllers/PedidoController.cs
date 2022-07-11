@@ -26,10 +26,13 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var pedidos = _pedidoRepository.GetAll();
+                var pedidos = _pedidoRepository.GetPedidos();
 
                 if (pedidos.Count() > 0)
-                    return Ok(_mapper.Map<IEnumerable<ReadPedidoDTO>>(pedidos));
+                {
+                    var readPedidos = _mapper.Map<IEnumerable<ReadPedidoDTO>>(pedidos);
+                    return Ok(readPedidos);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -42,16 +45,39 @@ namespace LocadoraVipFilmes.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var pedido = _pedidoRepository.GetById(id);
+                var pedido = _pedidoRepository.GetPedido(id);
 
                 if (pedido != null)
-                    return Ok(_mapper.Map<ReadPedidoDTO>(pedido));
+                {
+                    var readPedido = _mapper.Map<ReadPedidoDTO>(pedido);
+                    return Ok(readPedido);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
 
             return BadRequest("Validar se todos campos estão corretos.");
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetByNumeroPedido(long numeroPedido)
+        {
+            if (ModelState.IsValid)
+            {
+                var pedido = _pedidoRepository.GetPedidoByNumero(numeroPedido);
+
+                if (pedido != null)
+                {
+                    var readPedido = _mapper.Map<ReadPedidoDTO>(pedido);
+                    return Ok(readPedido);
+                }
+
+                return Ok("Nenhum iten localizado.");
+            }
+
+            return BadRequest("Validar se todos campos estão corretos.");
+        }
+
 
         [HttpPost]
         public IActionResult Add([FromBody] CreatePedidoDTO dto)

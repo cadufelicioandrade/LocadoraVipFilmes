@@ -26,10 +26,13 @@ namespace LocadoraVipfuncionarios.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var funcionarios = _funcionarioRepository.GetAll();
+                var funcionarios = _funcionarioRepository.GetFuncionarios();
 
                 if (funcionarios.Count() > 0)
-                    return Ok(_mapper.Map<IEnumerable<ReadFuncionarioDTO>>(funcionarios));
+                {
+                    var readFuncionarios = _mapper.Map<IEnumerable<ReadFuncionarioDTO>>(funcionarios);
+                    return Ok(readFuncionarios);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -42,10 +45,13 @@ namespace LocadoraVipfuncionarios.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var funcionario = _funcionarioRepository.GetById(id);
+                var funcionario = _funcionarioRepository.GetFuncionario(id);
 
                 if (funcionario != null)
-                    return Ok(_mapper.Map<ReadFuncionarioDTO>(funcionario));
+                {
+                    var readFuncionario = _mapper.Map<ReadFuncionarioDTO>(funcionario);
+                    return Ok(readFuncionario);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }

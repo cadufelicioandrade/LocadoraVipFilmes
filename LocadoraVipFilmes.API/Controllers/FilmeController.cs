@@ -26,10 +26,13 @@ namespace LocadoraVipFilmes.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filmes = _filmeRepository.GetAll();
+                var filmes = _filmeRepository.GetFilmes();
 
                 if (filmes.Count() > 0)
-                    return Ok(_mapper.Map<IEnumerable<ReadFilmeDTO>>(filmes));
+                {
+                    var readFilmes = _mapper.Map<IEnumerable<ReadFilmeDTO>>(filmes);
+                    return Ok(readFilmes);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }
@@ -42,10 +45,13 @@ namespace LocadoraVipFilmes.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filme = _filmeRepository.GetById(id);
+                var filme = _filmeRepository.GetFilme(id);
 
                 if (filme != null)
-                    return Ok(_mapper.Map<ReadFilmeDTO>(filme));
+                {
+                    var readFilme = _mapper.Map<ReadFilmeDTO>(filme);
+                    return Ok(readFilme);
+                }
 
                 return Ok("Nenhum iten localizado.");
             }

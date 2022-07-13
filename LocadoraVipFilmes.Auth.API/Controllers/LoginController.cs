@@ -24,6 +24,9 @@ namespace LocadoraVipFilmes.Auth.API.Controllers
             if (result.IsFailed)
                 return Unauthorized(result.Errors[0]);
 
+            //x-access-token vai ser usuário no front-end para recuperar o token
+            Response.Headers.Add("x-access-token", result.Successes[0].Message);
+
             return Ok(result.Successes[0]);
         }
 
